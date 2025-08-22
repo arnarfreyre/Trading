@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YFinance Data Reference Guide</title>
+    <link rel="stylesheet" href="yfinance.css">
+</head>
+<body>
+    <header>
+        <h1>📊 YFinance Complete Data Reference</h1>
+        <p class="subtitle">Comprehensive guide to all data accessible through yfinance Python library</p>
+    </header>
+
+    <nav class="toc">
+        <h2>Quick Navigation</h2>
+        <ul>
+            <li><a href="#ticker-basics">Ticker Basics</a></li>
+            <li><a href="#price-history">Price History</a></li>
+            <li><a href="#fundamental-data">Fundamental Data</a></li>
+            <li><a href="#market-data">Market Data</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#corporate-actions">Corporate Actions</a></li>
+            <li><a href="#holders">Holders Information</a></li>
+            <li><a href="#analysis">Analysis & Recommendations</a></li>
+            <li><a href="#utilities">Utilities & Helpers</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Ticker Basics Section -->
+        <section id="ticker-basics" class="data-section">
+            <h2>📈 Ticker Basics</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Creating a Ticker Object</h3>
+                    <code class="code-block">
+import yfinance as yf
+ticker = yf.Ticker("AAPL")
+                    </code>
+                    <p>Base object for accessing all ticker-specific data</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>Basic Information (.info)</h3>
+                    <div class="info-grid">
+                        <div class="info-category">
+                            <h4>Company Details</h4>
+                            <ul>
+                                <li>symbol</li>
+                                <li>longName</li>
+                                <li>shortName</li>
+                                <li>sector</li>
+                                <li>industry</li>
+                                <li>website</li>
+                                <li>address1, city, state, zip, country</li>
+                                <li>phone</li>
+                                <li>fullTimeEmployees</li>
+                                <li>companyOfficers</li>
+                                <li>description (longBusinessSummary)</li>
+                            </ul>
+                        </div>
+                        <div class="info-category">
+                            <h4>Market Data</h4>
+                            <ul>
+                                <li>currency</li>
+                                <li>exchange</li>
+                                <li>quoteType</li>
+                                <li>market</li>
+                                <li>marketCap</li>
+                                <li>enterpriseValue</li>
+                                <li>currentPrice</li>
+                                <li>previousClose</li>
+                                <li>regularMarketOpen</li>
+                                <li>dayLow / dayHigh</li>
+                                <li>fiftyTwoWeekLow / fiftyTwoWeekHigh</li>
+                                <li>fiftyDayAverage</li>
+                                <li>twoHundredDayAverage</li>
+                                <li>volume</li>
+                                <li>averageVolume</li>
+                                <li>averageVolume10days</li>
+                                <li>bid / bidSize</li>
+                                <li>ask / askSize</li>
+                                <li>sharesOutstanding</li>
+                                <li>floatShares</li>
+                                <li>impliedSharesOutstanding</li>
+                                <li>sharesShort</li>
+                                <li>sharesShortPriorMonth</li>
+                                <li>shortRatio</li>
+                                <li>shortPercentOfFloat</li>
+                                <li>heldPercentInsiders</li>
+                                <li>heldPercentInstitutions</li>
+                            </ul>
+                        </div>
+                        <div class="info-category">
+                            <h4>Valuation Metrics</h4>
+                            <ul>
+                                <li>trailingPE</li>
+                                <li>forwardPE</li>
+                                <li>pegRatio</li>
+                                <li>priceToSalesTrailing12Months</li>
+                                <li>priceToBook</li>
+                                <li>enterpriseToRevenue</li>
+                                <li>enterpriseToEbitda</li>
+                                <li>beta</li>
+                                <li>trailingEps</li>
+                                <li>forwardEps</li>
+                                <li>bookValue</li>
+                            </ul>
+                        </div>
+                        <div class="info-category">
+                            <h4>Financial Metrics</h4>
+                            <ul>
+                                <li>totalRevenue</li>
+                                <li>revenuePerShare</li>
+                                <li>revenueGrowth</li>
+                                <li>grossProfits</li>
+                                <li>grossMargins</li>
+                                <li>ebitda</li>
+                                <li>ebitdaMargins</li>
+                                <li>netIncomeToCommon</li>
+                                <li>profitMargins</li>
+                                <li>operatingCashflow</li>
+                                <li>freeCashflow</li>
+                                <li>operatingMargins</li>
+                                <li>earningsGrowth</li>
+                                <li>earningsQuarterlyGrowth</li>
+                                <li>returnOnAssets</li>
+                                <li>returnOnEquity</li>
+                                <li>totalCash</li>
+                                <li>totalCashPerShare</li>
+                                <li>totalDebt</li>
+                                <li>debtToEquity</li>
+                                <li>quickRatio</li>
+                                <li>currentRatio</li>
+                            </ul>
+                        </div>
+                        <div class="info-category">
+                            <h4>Dividend Information</h4>
+                            <ul>
+                                <li>dividendRate</li>
+                                <li>dividendYield</li>
+                                <li>trailingAnnualDividendRate</li>
+                                <li>trailingAnnualDividendYield</li>
+                                <li>fiveYearAvgDividendYield</li>
+                                <li>payoutRatio</li>
+                                <li>lastDividendValue</li>
+                                <li>lastDividendDate</li>
+                                <li>exDividendDate</li>
+                            </ul>
+                        </div>
+                        <div class="info-category">
+                            <h4>Analyst Targets</h4>
+                            <ul>
+                                <li>targetHighPrice</li>
+                                <li>targetLowPrice</li>
+                                <li>targetMeanPrice</li>
+                                <li>targetMedianPrice</li>
+                                <li>recommendationMean</li>
+                                <li>recommendationKey</li>
+                                <li>numberOfAnalystOpinions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <h3>Fast Info (.fast_info)</h3>
+                    <code class="code-block">ticker.fast_info</code>
+                    <ul>
+                        <li>currency</li>
+                        <li>dayHigh</li>
+                        <li>dayLow</li>
+                        <li>exchange</li>
+                        <li>fiftyDayAverage</li>
+                        <li>lastPrice</li>
+                        <li>lastVolume</li>
+                        <li>marketCap</li>
+                        <li>open</li>
+                        <li>previousClose</li>
+                        <li>quoteType</li>
+                        <li>regularMarketPreviousClose</li>
+                        <li>shares</li>
+                        <li>tenDayAverageVolume</li>
+                        <li>threeMonthAverageVolume</li>
+                        <li>timezone</li>
+                        <li>twoHundredDayAverage</li>
+                        <li>yearChange</li>
+                        <li>yearHigh</li>
+                        <li>yearLow</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price History Section -->
+        <section id="price-history" class="data-section">
+            <h2>📉 Price History</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Historical Data (.history())</h3>
+                    <code class="code-block">
+# Get historical market data
+df = ticker.history(
+    period="1mo",      # 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
+    interval="1d",     # 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo
+    start="2023-01-01",
+    end="2024-01-01",
+    prepost=True,      # Include pre/post market data
+    auto_adjust=True,  # Adjust for dividends/splits
+    back_adjust=False,
+    repair=False,      # Repair missing data
+    keepna=False,
+    proxy=None,
+    rounding=True,
+    timeout=10,
+    tz=None
+)
+                    </code>
+                    <h4>Returned Columns:</h4>
+                    <ul>
+                        <li>Open</li>
+                        <li>High</li>
+                        <li>Low</li>
+                        <li>Close</li>
+                        <li>Volume</li>
+                        <li>Dividends</li>
+                        <li>Stock Splits</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Bulk Download (yf.download())</h3>
+                    <code class="code-block">
+# Download data for multiple tickers
+data = yf.download(
+    tickers="SPY AAPL MSFT",  # Space or comma separated
+    period="1mo",
+    interval="1d",
+    group_by='ticker',  # 'ticker' or 'column'
+    auto_adjust=True,
+    prepost=True,
+    threads=True,       # Use multithreading
+    proxy=None
+)
+                    </code>
+                    <p>Efficient way to download data for multiple symbols simultaneously</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>Period Options</h3>
+                    <ul>
+                        <li><strong>1d</strong> - 1 day</li>
+                        <li><strong>5d</strong> - 5 days</li>
+                        <li><strong>1mo</strong> - 1 month</li>
+                        <li><strong>3mo</strong> - 3 months</li>
+                        <li><strong>6mo</strong> - 6 months</li>
+                        <li><strong>1y</strong> - 1 year</li>
+                        <li><strong>2y</strong> - 2 years</li>
+                        <li><strong>5y</strong> - 5 years</li>
+                        <li><strong>10y</strong> - 10 years</li>
+                        <li><strong>ytd</strong> - Year to date</li>
+                        <li><strong>max</strong> - All available data</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Interval Options</h3>
+                    <ul>
+                        <li><strong>1m</strong> - 1 minute (max 7 days)</li>
+                        <li><strong>2m, 5m, 15m, 30m</strong> - Intraday (max 60 days)</li>
+                        <li><strong>60m, 90m</strong> - Hourly (max 730 days)</li>
+                        <li><strong>1h</strong> - 1 hour (max 730 days)</li>
+                        <li><strong>1d</strong> - Daily</li>
+                        <li><strong>5d</strong> - 5 days</li>
+                        <li><strong>1wk</strong> - Weekly</li>
+                        <li><strong>1mo</strong> - Monthly</li>
+                        <li><strong>3mo</strong> - Quarterly</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fundamental Data Section -->
+        <section id="fundamental-data" class="data-section">
+            <h2>💰 Fundamental Data</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Financial Statements</h3>
+                    <code class="code-block">
+# Income Statement
+ticker.financials
+ticker.quarterly_financials
+
+# Balance Sheet
+ticker.balance_sheet
+ticker.quarterly_balance_sheet
+
+# Cash Flow Statement
+ticker.cashflow
+ticker.quarterly_cashflow
+
+# Earnings
+ticker.earnings
+ticker.quarterly_earnings
+                    </code>
+                    <h4>Income Statement Items:</h4>
+                    <ul>
+                        <li>Total Revenue</li>
+                        <li>Cost of Revenue</li>
+                        <li>Gross Profit</li>
+                        <li>Operating Expenses</li>
+                        <li>Operating Income</li>
+                        <li>Interest Expense</li>
+                        <li>Tax Provision</li>
+                        <li>Net Income</li>
+                        <li>EBIT / EBITDA</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Balance Sheet Items</h3>
+                    <ul>
+                        <li>Total Assets</li>
+                        <li>Current Assets</li>
+                        <li>Cash and Cash Equivalents</li>
+                        <li>Inventory</li>
+                        <li>Total Liabilities</li>
+                        <li>Current Liabilities</li>
+                        <li>Long Term Debt</li>
+                        <li>Total Stockholder Equity</li>
+                        <li>Retained Earnings</li>
+                        <li>Common Stock</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Cash Flow Items</h3>
+                    <ul>
+                        <li>Operating Cash Flow</li>
+                        <li>Investing Cash Flow</li>
+                        <li>Financing Cash Flow</li>
+                        <li>Free Cash Flow</li>
+                        <li>Capital Expenditures</li>
+                        <li>Dividends Paid</li>
+                        <li>Stock Repurchases</li>
+                        <li>Net Borrowings</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Sustainability (ESG)</h3>
+                    <code class="code-block">ticker.sustainability</code>
+                    <ul>
+                        <li>Environmental Score</li>
+                        <li>Social Score</li>
+                        <li>Governance Score</li>
+                        <li>Total ESG Score</li>
+                        <li>Controversy Level</li>
+                        <li>Adult</li>
+                        <li>Alcoholic</li>
+                        <li>Animal Testing</li>
+                        <li>Catholic</li>
+                        <li>Coal</li>
+                        <li>Controversial Weapons</li>
+                        <li>Fur Leather</li>
+                        <li>Gambling</li>
+                        <li>GMO</li>
+                        <li>Military Contract</li>
+                        <li>Nuclear</li>
+                        <li>Palm Oil</li>
+                        <li>Pesticides</li>
+                        <li>Small Arms</li>
+                        <li>Tobacco</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Calendar Events</h3>
+                    <code class="code-block">ticker.calendar</code>
+                    <ul>
+                        <li>Earnings Date(s)</li>
+                        <li>Ex-Dividend Date</li>
+                        <li>Dividend Date</li>
+                        <li>Revenue Estimate</li>
+                        <li>Earnings Estimate</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Data Section -->
+        <section id="market-data" class="data-section">
+            <h2>🌍 Market Data</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Market Types</h3>
+                    <ul>
+                        <li><strong>Stocks</strong> - Individual equities</li>
+                        <li><strong>ETFs</strong> - Exchange Traded Funds</li>
+                        <li><strong>Mutual Funds</strong> - Mutual fund tickers</li>
+                        <li><strong>Indices</strong> - ^GSPC (S&P 500), ^DJI (Dow Jones), ^IXIC (Nasdaq)</li>
+                        <li><strong>Currencies</strong> - EURUSD=X, GBPUSD=X, JPY=X</li>
+                        <li><strong>Cryptocurrencies</strong> - BTC-USD, ETH-USD, ADA-USD</li>
+                        <li><strong>Commodities</strong> - GC=F (Gold), CL=F (Crude Oil), SI=F (Silver)</li>
+                        <li><strong>Bonds</strong> - ^TNX (10-Year Treasury), ^TYX (30-Year Treasury)</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Real-time Quotes</h3>
+                    <code class="code-block">
+# Get real-time price
+ticker = yf.Ticker("AAPL")
+info = ticker.info
+current_price = info['currentPrice']
+bid = info['bid']
+ask = info['ask']
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Pre/Post Market Data</h3>
+                    <code class="code-block">
+# Include pre and post market data
+history = ticker.history(period="1d", prepost=True)
+
+# Access specific pre/post market info
+info = ticker.info
+pre_market_price = info.get('preMarketPrice')
+post_market_price = info.get('postMarketPrice')
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>News</h3>
+                    <code class="code-block">
+# Get latest news
+news = ticker.news
+
+# Each news item contains:
+# - uuid
+# - title
+# - publisher
+# - link
+# - providerPublishTime
+# - type
+# - thumbnail
+# - relatedTickers
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Options Section -->
+        <section id="options" class="data-section">
+            <h2>📊 Options</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Options Chain</h3>
+                    <code class="code-block">
+# Get expiration dates
+expirations = ticker.options
+
+# Get options chain for specific date
+opt = ticker.option_chain('2024-01-19')
+
+# Access calls and puts
+calls = opt.calls
+puts = opt.puts
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Options Data Columns</h3>
+                    <ul>
+                        <li>contractSymbol</li>
+                        <li>lastTradeDate</li>
+                        <li>strike</li>
+                        <li>lastPrice</li>
+                        <li>bid</li>
+                        <li>ask</li>
+                        <li>change</li>
+                        <li>percentChange</li>
+                        <li>volume</li>
+                        <li>openInterest</li>
+                        <li>impliedVolatility</li>
+                        <li>inTheMoney</li>
+                        <li>contractSize</li>
+                        <li>currency</li>
+                    </ul>
+                </div>
+
+                <div class="data-card">
+                    <h3>Greeks (if available)</h3>
+                    <ul>
+                        <li>Delta - Price sensitivity</li>
+                        <li>Gamma - Delta sensitivity</li>
+                        <li>Theta - Time decay</li>
+                        <li>Vega - Volatility sensitivity</li>
+                        <li>Rho - Interest rate sensitivity</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corporate Actions Section -->
+        <section id="corporate-actions" class="data-section">
+            <h2>🏢 Corporate Actions</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Dividends</h3>
+                    <code class="code-block">
+# Get dividend history
+dividends = ticker.dividends
+
+# Get all actions (dividends + splits)
+actions = ticker.actions
+                    </code>
+                    <p>Returns Series with dates and dividend amounts</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>Stock Splits</h3>
+                    <code class="code-block">
+# Get stock split history
+splits = ticker.splits
+                    </code>
+                    <p>Returns Series with dates and split ratios</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>Capital Gains</h3>
+                    <code class="code-block">
+# Get capital gains (mainly for mutual funds)
+capital_gains = ticker.capital_gains
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Share Count</h3>
+                    <code class="code-block">
+# Get shares outstanding history
+shares = ticker.shares
+
+# Also available in info
+shares_outstanding = ticker.info['sharesOutstanding']
+float_shares = ticker.info['floatShares']
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Holders Section -->
+        <section id="holders" class="data-section">
+            <h2>👥 Holders Information</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Institutional Holders</h3>
+                    <code class="code-block">
+institutional = ticker.institutional_holders
+# Columns: Holder, Shares, Date Reported, % Out, Value
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Major Holders</h3>
+                    <code class="code-block">
+major = ticker.major_holders
+# Shows percentage breakdowns
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Mutual Fund Holders</h3>
+                    <code class="code-block">
+mutual_funds = ticker.mutualfund_holders
+# Columns: Holder, Shares, Date Reported, % Out, Value
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Insider Transactions</h3>
+                    <code class="code-block">
+# All insider transactions
+insider_transactions = ticker.insider_transactions
+
+# Insider purchases only
+insider_purchases = ticker.insider_purchases
+
+# Insider roster holders
+insider_roster = ticker.insider_roster_holders
+                    </code>
+                    <h4>Transaction Columns:</h4>
+                    <ul>
+                        <li>Start Date</li>
+                        <li>Shares</li>
+                        <li>Value</li>
+                        <li>Transaction</li>
+                        <li>Insider Name</li>
+                        <li>Position</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analysis Section -->
+        <section id="analysis" class="data-section">
+            <h2>📈 Analysis & Recommendations</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Analyst Recommendations</h3>
+                    <code class="code-block">
+recommendations = ticker.recommendations
+# or
+recommendations = ticker.recommendations_summary
+
+# Columns typically include:
+# - period
+# - strongBuy
+# - buy  
+# - hold
+# - sell
+# - strongSell
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Upgrades/Downgrades</h3>
+                    <code class="code-block">
+upgrades_downgrades = ticker.upgrades_downgrades
+
+# Columns:
+# - Firm
+# - ToGrade
+# - FromGrade
+# - Action
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Analyst Price Targets</h3>
+                    <code class="code-block">
+info = ticker.info
+targets = {
+    'current': info.get('currentPrice'),
+    'mean': info.get('targetMeanPrice'),
+    'median': info.get('targetMedianPrice'),
+    'high': info.get('targetHighPrice'),
+    'low': info.get('targetLowPrice'),
+    'numberOfAnalysts': info.get('numberOfAnalystOpinions')
+}
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Revenue & Earnings Estimates</h3>
+                    <code class="code-block">
+# Get earnings history and estimates
+earnings_history = ticker.earnings_history
+earnings_dates = ticker.earnings_dates
+
+# Get revenue estimates
+revenue_estimate = ticker.revenue_estimate
+earnings_estimate = ticker.earnings_estimate
+earnings_trend = ticker.earnings_trend
+eps_trend = ticker.eps_trend
+eps_revisions = ticker.eps_revisions
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utilities Section -->
+        <section id="utilities" class="data-section">
+            <h2>🛠️ Utilities & Helpers</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>ISIN Code</h3>
+                    <code class="code-block">
+# Get ISIN code
+isin = ticker.isin
+                    </code>
+                    <p>International Securities Identification Number</p>
+                </div>
+
+                <div class="data-card">
+                    <h3>Ticker Validation</h3>
+                    <code class="code-block">
+# Check if ticker exists
+ticker = yf.Ticker("INVALID")
+info = ticker.info
+# Empty dict means invalid ticker
+is_valid = len(info) > 0
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Cache Management</h3>
+                    <code class="code-block">
+# yfinance uses caching by default
+# Clear cache if needed
+import yfinance as yf
+yf.cache.clear()
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Proxy Support</h3>
+                    <code class="code-block">
+# Use proxy for requests
+ticker = yf.Ticker("AAPL", proxy="http://proxy.com:8080")
+
+# Or in download
+data = yf.download("AAPL", proxy="http://proxy.com:8080")
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Multi-threading</h3>
+                    <code class="code-block">
+# Enable multi-threading for faster downloads
+data = yf.download(
+    tickers="AAPL MSFT GOOGL",
+    threads=True  # or specify number of threads
+)
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Data Repair</h3>
+                    <code class="code-block">
+# Repair missing data
+history = ticker.history(
+    period="1y",
+    repair=True  # Attempts to repair missing/bad data
+)
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Screener (Beta)</h3>
+                    <code class="code-block">
+from yfinance import Screener
+
+# Get predefined screeners
+screener = Screener()
+
+# Available screeners
+aggressive_small_caps = screener.get_screeners(['aggressive_small_caps'])
+day_gainers = screener.get_screeners(['day_gainers'])
+day_losers = screener.get_screeners(['day_losers'])
+most_actives = screener.get_screeners(['most_actives'])
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Sector & Industry Data</h3>
+                    <code class="code-block">
+from yfinance import Sector, Industry
+
+# Get sector data
+tech_sector = Sector('technology')
+sector_info = tech_sector.info
+sector_top_companies = tech_sector.top_companies
+sector_overview = tech_sector.overview
+
+# Get industry data  
+software_industry = Industry('software-infrastructure')
+industry_info = software_industry.info
+industry_top_companies = software_industry.top_companies
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Features Section -->
+        <section id="advanced" class="data-section">
+            <h2>🚀 Advanced Features</h2>
+            <div class="card-grid">
+                <div class="data-card">
+                    <h3>Custom Intervals with Pandas</h3>
+                    <code class="code-block">
+import pandas as pd
+
+# Get minute data and resample
+df = ticker.history(period="1d", interval="1m")
+
+# Resample to custom intervals
+df_5min = df.resample('5T').agg({
+    'Open': 'first',
+    'High': 'max',
+    'Low': 'min',
+    'Close': 'last',
+    'Volume': 'sum'
+})
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Technical Indicators</h3>
+                    <code class="code-block">
+# yfinance data works well with ta-lib or pandas-ta
+import pandas_ta as ta
+
+df = ticker.history(period="1y")
+
+# Add technical indicators
+df['SMA_20'] = ta.sma(df['Close'], length=20)
+df['RSI'] = ta.rsi(df['Close'], length=14)
+df['MACD'] = ta.macd(df['Close'])['MACD_12_26_9']
+df['BB_upper'], df['BB_middle'], df['BB_lower'] = ta.bbands(df['Close'])
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Batch Processing</h3>
+                    <code class="code-block">
+# Process multiple tickers efficiently
+tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN']
+data = {}
+
+for symbol in tickers:
+    ticker = yf.Ticker(symbol)
+    data[symbol] = {
+        'info': ticker.info,
+        'history': ticker.history(period="1mo"),
+        'recommendations': ticker.recommendations
+    }
+                    </code>
+                </div>
+
+                <div class="data-card">
+                    <h3>Error Handling</h3>
+                    <code class="code-block">
+import yfinance as yf
+from requests import Session
+from requests_cache import CacheMixin, SQLiteCache
+from requests_ratelimiter import LimiterMixin, MemoryQueueBucket
+
+# Create session with caching and rate limiting
+class CachedLimiterSession(CacheMixin, LimiterMixin, Session):
+    pass
+
+session = CachedLimiterSession(
+    limiter=MemoryQueueBucket(max_calls=2, interval=1),
+    backend=SQLiteCache()
+)
+
+# Use custom session
+ticker = yf.Ticker("AAPL", session=session)
+                    </code>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Availability Matrix -->
+        <section id="availability" class="data-section">
+            <h2>📋 Data Availability by Asset Type</h2>
+            <div class="availability-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data Type</th>
+                            <th>Stocks</th>
+                            <th>ETFs</th>
+                            <th>Mutual Funds</th>
+                            <th>Crypto</th>
+                            <th>Forex</th>
+                            <th>Indices</th>
+                            <th>Commodities</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Price History</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>Intraday Data</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                        </tr>
+                        <tr>
+                            <td>Fundamentals</td>
+                            <td>✅</td>
+                            <td>⚠️</td>
+                            <td>⚠️</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Options</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>⚠️</td>
+                            <td>⚠️</td>
+                        </tr>
+                        <tr>
+                            <td>Dividends</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Splits</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>⚠️</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Holders</td>
+                            <td>✅</td>
+                            <td>⚠️</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>Analyst Data</td>
+                            <td>✅</td>
+                            <td>⚠️</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                        </tr>
+                        <tr>
+                            <td>News</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>⚠️</td>
+                            <td>✅</td>
+                            <td>⚠️</td>
+                            <td>✅</td>
+                            <td>⚠️</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="legend">
+                    <span>✅ Fully Available</span>
+                    <span>⚠️ Partially Available</span>
+                    <span>❌ Not Available</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>YFinance Data Reference Guide - Comprehensive documentation of all available data through the yfinance Python library</p>
+        <p>Note: Data availability may vary by ticker and region. Some features require specific market data subscriptions.</p>
+    </footer>
+
+    <script>
+        // Add collapsible functionality to sections
+        document.querySelectorAll('.data-section h2').forEach(header => {
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                section.classList.toggle('collapsed');
+            });
+        });
+
+        // Add copy functionality to code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            block.style.cursor = 'pointer';
+            block.title = 'Click to copy';
+            block.addEventListener('click', () => {
+                navigator.clipboard.writeText(block.textContent.trim());
+                const original = block.style.background;
+                block.style.background = '#4CAF50';
+                setTimeout(() => {
+                    block.style.background = original;
+                }, 200);
+            });
+        });
+
+        // Search functionality
+        function addSearchBar() {
+            const searchHtml = `
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search for yfinance data..." />
+                </div>
+            `;
+            document.querySelector('header').insertAdjacentHTML('beforeend', searchHtml);
+            
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                document.querySelectorAll('.data-card').forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    card.style.display = text.includes(searchTerm) ? '' : 'none';
+                });
+            });
+        }
+        
+        addSearchBar();
+    </script>
+</body>
+</html>
